@@ -4,24 +4,25 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">    
-    <title>Symbol Design System | Azure Serverless Indiders</title>
+    <title>Processing 100K events per second on Azure Functions | Azure Serverless Indiders</title>
     
     <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Symbol Design System | Azure Serverless Indiders</title>
+<title>Processing 100K events per second on Azure Functions | Azure Serverless Indiders</title>
 <meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="Symbol Design System" />
+<meta property="og:title" content="Processing 100K events per second on Azure Functions" />
+<meta name="author" content="yaya" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Symbol is an advanced web-design system based on Sketch nested symbols. There are not only the components but also the logic, the atomic structure. You can easily change just one symbol to create your own design style super fast." />
-<meta property="og:description" content="Symbol is an advanced web-design system based on Sketch nested symbols. There are not only the components but also the logic, the atomic structure. You can easily change just one symbol to create your own design style super fast." />
+<meta name="description" content="Today I want to talk about running high scale Event Hub/IOT Hub workloads on Azure Functions and some key points to be aware of in order to maximize the performance you get from the platform" />
+<meta property="og:description" content="Today I want to talk about running high scale Event Hub/IOT Hub workloads on Azure Functions and some key points to be aware of in order to maximize the performance you get from the platform" />
 <meta property="og:site_name" content="Azure Serverless Indiders" />
-<meta property="og:image" content="/template-pintereso-bootstrap-jekyll/assets/images/symbol.jpg" />
+<meta property="og:image" content="/template-pintereso-bootstrap-jekyll/assets/images/atomize.jpg" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-01-12T00:00:00+01:00" />
+<meta property="article:published_time" content="2021-06-19T00:00:00+02:00" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta property="twitter:image" content="/template-pintereso-bootstrap-jekyll/assets/images/symbol.jpg" />
-<meta property="twitter:title" content="Symbol Design System" />
+<meta property="twitter:image" content="/template-pintereso-bootstrap-jekyll/assets/images/atomize.jpg" />
+<meta property="twitter:title" content="Processing 100K events per second on Azure Functions" />
 <script type="application/ld+json">
-{"url":"/template-pintereso-bootstrap-jekyll/symbol/","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"/template-pintereso-bootstrap-jekyll/symbol/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/template-pintereso-bootstrap-jekyll/assets/images/logo.png"}},"image":"/template-pintereso-bootstrap-jekyll/assets/images/symbol.jpg","headline":"Symbol Design System","dateModified":"2018-01-12T00:00:00+01:00","datePublished":"2018-01-12T00:00:00+01:00","description":"Symbol is an advanced web-design system based on Sketch nested symbols. There are not only the components but also the logic, the atomic structure. You can easily change just one symbol to create your own design style super fast.","@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"yaya"},"url":"/template-pintereso-bootstrap-jekyll/processing-100K-events-per-second-on-Azure-Functions/","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"/template-pintereso-bootstrap-jekyll/processing-100K-events-per-second-on-Azure-Functions/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/template-pintereso-bootstrap-jekyll/assets/images/logo.png"},"name":"yaya"},"image":"/template-pintereso-bootstrap-jekyll/assets/images/atomize.jpg","headline":"Processing 100K events per second on Azure Functions","dateModified":"2021-06-19T00:00:00+02:00","datePublished":"2021-06-19T00:00:00+02:00","description":"Today I want to talk about running high scale Event Hub/IOT Hub workloads on Azure Functions and some key points to be aware of in order to maximize the performance you get from the platform","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     
@@ -395,42 +396,48 @@ function lunr_search(term) {
                     
                   
                     <span class="pinme">
-                        <a data-pin-do="buttonPin" data-pin-tall="true" href="https://www.pinterest.com/pin/create/button/?url=/template-pintereso-bootstrap-jekyll/symbol/&media=/template-pintereso-bootstrap-jekyll//assets/images/symbol.jpg&description=Symbol Design System- Symbol is an advanced web-design system based on Sketch nested symbols. There are not only the components but also the logic, the atomic structure. You..."></a>
+                        <a data-pin-do="buttonPin" data-pin-tall="true" href="https://www.pinterest.com/pin/create/button/?url=/template-pintereso-bootstrap-jekyll/processing-100K-events-per-second-on-Azure-Functions/&media=/template-pintereso-bootstrap-jekyll//assets/images/atomize.jpg&description=Processing 100K events per second on Azure Functions- Today I want to talk about running high scale Event Hub/IOT Hub workloads on Azure Functions and some key points to be aware of in..."></a>
                     </span>
-                    <img class="card-img-top mb-2" src="/template-pintereso-bootstrap-jekyll/assets/images/symbol.jpg" alt="Symbol Design System"> 
+                    <img class="card-img-top mb-2" src="/template-pintereso-bootstrap-jekyll/assets/images/atomize.jpg" alt="Processing 100K events per second on Azure Functions"> 
                 
                     
     			<div class="card-body">
                     
     				<h1 class="display-4">
-    				    Symbol Design System 
+    				    Processing 100K events per second on Azure Functions 
                     </h1>                    
                      
                     <small class="text-muted d-block mb-3">
                         
                         
+                            , by Yaya 
+                        
                     </small>                    
                     
-    				<p>Symbol is an advanced web-design system based on Sketch nested symbols. There are not only the components but also the logic, the atomic structure. You can easily change just one symbol to create your own design style super fast.</p>
+    				<p>Today I want to talk about running high scale Event Hub/IOT Hub workloads on Azure Functions and some key points to be aware of in order to maximize the performance you get from the platform</p>
 
                     
                     
-                    <p><a target="_blank" href="https://crmrkt.com/2QKQy0" class="btn btn-gray d-block font-weight-bold">
+                    <p><a target="_blank" href="https://azure.microsoft.com/fr-fr/blog/processing-100-000-events-per-second-on-azure-functions/?ref=msdn" class="btn btn-gray d-block font-weight-bold">
                         Visit <i class="fas fa-external-link-alt"></i></a>
                     </p>
                     
                     
                     
-                      <a class="btn btn-sm btn-primary mt-2" href="/template-pintereso-bootstrap-jekyll/categories.html#premium">
-                        # premium
+                      <a class="btn btn-sm btn-primary mt-2" href="/template-pintereso-bootstrap-jekyll/categories.html#functions">
+                        # functions
                       </a>
                     
-                      <a class="btn btn-sm btn-primary mt-2" href="/template-pintereso-bootstrap-jekyll/categories.html#ui">
-                        # ui
+                      <a class="btn btn-sm btn-primary mt-2" href="/template-pintereso-bootstrap-jekyll/categories.html#event hub">
+                        # event hub
                       </a>
                     
-                      <a class="btn btn-sm btn-primary mt-2" href="/template-pintereso-bootstrap-jekyll/categories.html#graphics">
-                        # graphics
+                      <a class="btn btn-sm btn-primary mt-2" href="/template-pintereso-bootstrap-jekyll/categories.html#performance">
+                        # performance
+                      </a>
+                    
+                      <a class="btn btn-sm btn-primary mt-2" href="/template-pintereso-bootstrap-jekyll/categories.html#devops">
+                        # devops
                       </a>
                     
                     
@@ -459,10 +466,8 @@ function lunr_search(term) {
                 
                 <div class="PageNavigation">
                   
-                    <a class="prev" href="/template-pintereso-bootstrap-jekyll/tinyone/"><i class="fa fa-angle-left"></i> </a>
                   
-                  
-                    <a class="next" href="/template-pintereso-bootstrap-jekyll/simple-mockup/"><i class="fa fa-angle-right"></i></a>
+                    <a class="next" href="/template-pintereso-bootstrap-jekyll/stellar-social-media-banner/"><i class="fa fa-angle-right"></i></a>
                   
                 </div>
                 
