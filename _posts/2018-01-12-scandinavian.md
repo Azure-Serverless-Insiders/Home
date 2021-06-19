@@ -1,7 +1,7 @@
 ---
-title:  "Scandinavian"
+title:  "How to build a Scandinavian Home"
 metadate: "hide"
-categories: [ Premium, UI, WordPress, Themes ]
+categories: [ Premium, UI, WordPress, Themes, DevOps]
 image: "/assets/images/scandinavian.jpg"
 visit: "https://crmrkt.com/Rzq1GQ"
 ---

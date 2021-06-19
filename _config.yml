@@ -1,12 +1,12 @@
 # Site
-name: 'Pintereso'
-description: 'Pintereso is a free Jekyll theme for awesome people like you, Pinterest like.'
+name: 'Azure Serverless Indiders'
+description: 'Serverless Indiders est un Hub de documentation pour tout apprndre sur le monde du Serverless Azure'
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/logo.png'
 baseurl: '/template-pintereso-bootstrap-jekyll'
 avatar: 'assets/images/sal.jpg'
 disqus: 'demowebsite'
-email: 'wowthemesnet@gmail.com'
+email: 'yelghali@gmail.com'
 
 include: ["_pages"]
 permalink: /:title/
@@ -17,6 +17,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-paginate
   - jekyll-seo-tag
+  - kramdown-parser-gfm
  
 # Defaults
 defaults:
