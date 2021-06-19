@@ -16,4 +16,8 @@ group :jekyll_plugins do
     gem 'jekyll-paginate'
     gem 'jekyll-seo-tag'
     gem 'kramdown-parser-gfm'
+<<<<<<< HEAD
 end
+=======
+end
+>>>>>>> 1c5ab5c4f797c4ac69abb87e4204c8b5ece488cd
