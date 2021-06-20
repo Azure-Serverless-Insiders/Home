@@ -1,0 +1,6 @@
+I"‹<p>In many ways, planning for secure development, deployment, and operation of serverless functions is much the same as for any web-based or cloud hosted application.</p>
+
+<p>Azure App Service provides the hosting infrastructure for your function apps.</p>
+
+<p>This article provides security strategies for running your function code, and how App Service can help you secure your functions.</p>
+:ET
