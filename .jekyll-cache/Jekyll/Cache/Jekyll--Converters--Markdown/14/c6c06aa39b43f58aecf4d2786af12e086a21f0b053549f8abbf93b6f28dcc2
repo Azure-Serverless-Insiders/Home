@@ -1,0 +1,5 @@
+I"œ<p>The app consists of two projects:</p>
+
+<p>A Vue.js app that is our main interface. It uses the Microsoft Azure Cognitive Services Speech SDK to listen to the deviceâ€™s microphone and perform real-time speech-to-text and translations.
+An Azure Function app providing serverless HTTP APIs that the user interface will call to broadcast translated captions to connected devices using Azure SignalR Service.</p>
+:ET

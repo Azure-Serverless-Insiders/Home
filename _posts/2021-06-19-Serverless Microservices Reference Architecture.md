@@ -1,7 +1,7 @@
 ---
 title:  "Serverless Microservices Reference Architecture"
 metadate: "hide"
-categories: [ Functions, Customer scenario, Reference Architecture]
+categories: [ Functions, Reference Architecture]
 image: "https://docs.microsoft.com/en-us/samples/azure-samples/serverless-microservices-reference-architecture/serverless-microservices-reference-architecture/media/macro-architecture.png"
 visit: "https://docs.microsoft.com/en-us/samples/azure-samples/serverless-microservices-reference-architecture/serverless-microservices-reference-architecture/"
 author: "yaya"

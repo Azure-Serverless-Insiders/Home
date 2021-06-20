@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">    
+    <title>Real-time Speech-to-Text and Translation with Cognitive Services, Azure Functions, and SignalR Service | Azure Serverless Indiders</title>
+    
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Real-time Speech-to-Text and Translation with Cognitive Services, Azure Functions, and SignalR Service | Azure Serverless Indiders</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Real-time Speech-to-Text and Translation with Cognitive Services, Azure Functions, and SignalR Service" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="The app consists of two projects:" />
+<meta property="og:description" content="The app consists of two projects:" />
+<meta property="og:site_name" content="Azure Serverless Indiders" />
+<meta property="og:image" content="https://anthonychu.ca/post-assets/2019-03-26/architecture.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-06-20T00:00:00+02:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://anthonychu.ca/post-assets/2019-03-26/architecture.png" />
+<meta property="twitter:title" content="Real-time Speech-to-Text and Translation with Cognitive Services, Azure Functions, and SignalR Service" />
+<script type="application/ld+json">
+{"url":"/template-pintereso-bootstrap-jekyll/realtime-captioning-translation-cognitive-services-signalr-azure-functions/","@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/template-pintereso-bootstrap-jekyll/assets/images/logo.png"}},"image":"https://anthonychu.ca/post-assets/2019-03-26/architecture.png","mainEntityOfPage":{"@type":"WebPage","@id":"/template-pintereso-bootstrap-jekyll/realtime-captioning-translation-cognitive-services-signalr-azure-functions/"},"headline":"Real-time Speech-to-Text and Translation with Cognitive Services, Azure Functions, and SignalR Service","dateModified":"2021-06-20T00:00:00+02:00","datePublished":"2021-06-20T00:00:00+02:00","description":"The app consists of two projects:","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/template-pintereso-bootstrap-jekyll/assets/images/logo.png">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+  
+    <link rel="stylesheet" href="/template-pintereso-bootstrap-jekyll/assets/css/bootstrap.css">
+    
+    <link rel="stylesheet" href="/template-pintereso-bootstrap-jekyll/assets/css/theme.css">
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    
+    <!-- This goes before </head> closing tag, Google Analytics can be placed here --> 
+    
+</head>
+    
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <a class="navbar-brand font-weight-bolder mr-3" href="/template-pintereso-bootstrap-jekyll/index.html"><img src="/template-pintereso-bootstrap-jekyll/assets/images/logo.png"></a>
+    <button class="navbar-light navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarsDefault">        
+    	<ul class="navbar-nav mr-auto align-items-center">            
+            <script src="/template-pintereso-bootstrap-jekyll/assets/js/lunr.js"></script>
+
+<script>
+$(function() {
+    $("#lunrsearchresults").on('click', '#btnx', function () {
+        $('#lunrsearchresults').hide( 1000 );
+        $( "body" ).removeClass( "modal-open" );
+    });
+});
+    
+
+var documents = [{
+    "id": 0,
+    "url": "/template-pintereso-bootstrap-jekyll/about.html",
+    "title": "About",
+    "body": "Hi, guys! The website you are previewing is a demonstration for Pintereso Jekyll theme and it is hosted on Github pages. There are various ways you can use Pintereso with your Jekyll website. Here are some of them:  blogging curated resources affiliate marketing resume portfolio photographyFeatures  100% Github Pages Compatibility Bootstrap 4. x SEO Integration Search Categories Prev/Next Post Pagination Disqus Comments Sitemap Feed Formspree Contact Form Pinterest, AddThis, Google Analytics Font Awesome 5+ Cookie Consent &amp; Privacy PolicyMade with by Sal @wowthemesnet. Thanks for your support! pintereso. zip Buy me a coffee? "
+    }, {
+    "id": 1,
+    "url": "/template-pintereso-bootstrap-jekyll/author-jane.html",
+    "title": "Jane",
+    "body": "                        {{page. title}} Follow:         {{ site. authors. jane. site }}         {{ site. authors. jane. bio }}                                   Posts by {{page. title}}:       {% assign posts = site. posts | where: author , jane  %}      {% for post in posts %}      {% include main-loop-card. html %}      {% endfor %}  "
+    }, {
+    "id": 2,
+    "url": "/template-pintereso-bootstrap-jekyll/categories.html",
+    "title": "Categories",
+    "body": "        Categories          {% include menu-categories. html %}          {% for category in site. categories %}       # {{ category[0] }}:         {% assign pages_list = category[1] %}    {% for post in pages_list %}     {% if post. title != null %}       {% if group == null or group == post. group %}        {% include card-post. html %}       {% endif %}     {% endif %}    {% endfor %}    {% assign pages_list = nil %}    {% assign group = nil %}  {% endfor %}    "
+    }, {
+    "id": 3,
+    "url": "/template-pintereso-bootstrap-jekyll/contact.html",
+    "title": "Contact",
+    "body": "  Please send your message to {{site. name}}. We will reply as soon as possible!   "
+    }, {
+    "id": 4,
+    "url": "/template-pintereso-bootstrap-jekyll/",
+    "title": "Pintereso Free Jekyll Theme",
+    "body": "        Explore Articles          {% include menu-categories. html %}                    {% for post in paginator. posts reversed %}      {% include card-post. html %}    {% endfor %}                 {% if paginator. total_pages &gt; 1 %}          {% if paginator. previous_page %}      &laquo; Prev     {% else %}      &laquo; Prev     {% endif %}     {% for page in (1. . paginator. total_pages) %}      {% if page == paginator. page %}       {{ page }}      {% elsif page == 1 %}       {{ page }}      {% else %}       {{ page }}      {% endif %}     {% endfor %}     {% if paginator. next_page %}      Next &raquo;     {% else %}      Next &raquo;     {% endif %}        {% endif %}        "
+    }, {
+    "id": 5,
+    "url": "/template-pintereso-bootstrap-jekyll/privacy-policy.html",
+    "title": "Privacy Policy",
+    "body": "”{{site. name}}” takes your privacy seriously. To better protect your privacy we provide this privacy policy notice explaining the way your personal information is collected and used. Collection of Routine Information: This website track basic information about their visitors. This information includes, but is not limited to, IP addresses, browser details, timestamps and referring pages. None of this information can personally identify specific visitor to this website. The information is tracked for routine administration and maintenance purposes. Cookies: Where necessary, this website uses cookies to store information about a visitor’s preferences and history in order to better serve the visitor and/or present the visitor with customized content. Advertisement and Other Third Parties: Advertising partners and other third parties may use cookies, scripts and/or web beacons to track visitor activities on this website in order to display advertisements and other useful information. Such tracking is done directly by the third parties through their own servers and is subject to their own privacy policies. This website has no access or control over these cookies, scripts and/or web beacons that may be used by third parties. Learn how to opt out of Google’s cookie usage. Links to Third Party Websites: We have included links on this website for your use and reference. We are not responsible for the privacy policies on these websites. You should be aware that the privacy policies of these websites may differ from our own. Security: The security of your personal information is important to us, but remember that no method of transmission over the Internet, or method of electronic storage, is 100% secure. While we strive to use commercially acceptable means to protect your personal information, we cannot guarantee its absolute security. Changes To This Privacy Policy: This Privacy Policy is effective and will remain in effect except with respect to any changes in its provisions in the future, which will be in effect immediately after being posted on this page. We reserve the right to update or change our Privacy Policy at any time and you should check this Privacy Policy periodically. If we make any material changes to this Privacy Policy, we will notify you either through the email address you have provided us, or by placing a prominent notice on our website. Contact Information: For any questions or concerns regarding the privacy policy, please contact us here. "
+    }, {
+    "id": 6,
+    "url": "/template-pintereso-bootstrap-jekyll/toto.html",
+    "title": "toto",
+    "body": "Hi, guys! The website you are previewing is a demonstration for Pintereso Jekyll theme and it is hosted on Github pages. There are various ways you can use Pintereso with your Jekyll website. Here are some of them:  blogging curated resources affiliate marketing resume portfolio photographyFeatures  100% Github Pages Compatibility Bootstrap 4. x SEO Integration Search Categories Prev/Next Post Pagination Disqus Comments Sitemap Feed Formspree Contact Form Pinterest, AddThis, Google Analytics Font Awesome 5+ Cookie Consent &amp; Privacy PolicyMade with by Sal @wowthemesnet. Thanks for your support! pintereso. zip Buy me a coffee? "
+    }, {
+    "id": 7,
+    "url": "/template-pintereso-bootstrap-jekyll/robots.txt",
+    "title": "",
+    "body": "      Sitemap: {{ “sitemap. xml”   absolute_url }}   "
+    }, {
+    "id": 8,
+    "url": "/template-pintereso-bootstrap-jekyll/serverless-keyvault-secret-rotation-handling/",
+    "title": "Handling KeyVault secret rotation changes utilized by an Azure Function",
+    "body": "2021/06/20 - This sample showcases one way to handle when a KeyVault secret used by your Azure Function is “rolled” or updated as part of normal security operations in your organizations. "
+    }, {
+    "id": 9,
+    "url": "/template-pintereso-bootstrap-jekyll/realtime-captioning-translation-cognitive-services-signalr-azure-functions/",
+    "title": "Real-time Speech-to-Text and Translation with Cognitive Services, Azure Functions, and SignalR Service",
+    "body": "2021/06/20 - The app consists of two projects: A Vue. js app that is our main interface. It uses the Microsoft Azure Cognitive Services Speech SDK to listen to the device’s microphone and perform real-time speech-to-text and translations. An Azure Function app providing serverless HTTP APIs that the user interface will call to broadcast translated captions to connected devices using Azure SignalR Service. "
+    }, {
+    "id": 10,
+    "url": "/template-pintereso-bootstrap-jekyll/protect-api-s-using-oauth-2-0-in-apim/",
+    "title": "Protect API's using OAuth 2.0 in APIM",
+    "body": "2021/06/20 - The API Management is a proxy to the backend APIs, it’s a good practice to implement security mechanism to provide an extra layer of security to avoid unauthorized access to APIs. "
+    }, {
+    "id": 11,
+    "url": "/template-pintereso-bootstrap-jekyll/gaming-in-editor-telemetry/",
+    "title": "In-editor game telemetry visualization",
+    "body": "2021/06/20 - This is an example of how a developer could implement an in-editor telemetry visualization solution for their game. In fact, we developed an Unreal Engine 4 Plugin and Unity Plugin using this sample as its backend. The service component is game engine agnostic. "
+    }, {
+    "id": 12,
+    "url": "/template-pintereso-bootstrap-jekyll/functions-python-azureml-azurefunctions-deeplearning/",
+    "title": "Training a Model with AzureML and Azure Functions",
+    "body": "2021/06/20 - Automating the training of new ML model given code updates and/or new data with labels provided by a data scientist, can pose a challenge in the context of the dev ops or app development process due to the manual nature of data science work. One solution would be to use a training script (written by the data scientist) with the Azure Machine Learning SDK for Python (Azure ML Python SDK) run with a lightweight Azure Function that sends a training script to larger compute (process managed by the dev ops professional) to train an ML model (automatically performed when new data appears). This, then, triggers the build and release of an intelligent application (managed by the app developer). The intent of this repository is to communicate the process of training a model using a Python-based Azure Function and the Azure ML Python SDK, as well as, to provide a code sample for doing so. Training a model with the Azure ML Python SDK involves utilizing an Azure Compute option (e. g. an N-Series AML Compute) - the model is not trained within the Azure Function Consumption Plan. Triggers for the Azure Function could be HTTP Requests, an Event Grid or some other trigger. "
+    }, {
+    "id": 13,
+    "url": "/template-pintereso-bootstrap-jekyll/durablefunctions-mapreduce-dotnet/",
+    "title": "Big Data Processing: Serverless MapReduce on Azure",
+    "body": "2021/06/20 - In this sample you will find handful of Azure Functions comprising a Mapper and Reducer to determine the average speed of New York Yellow taxi trips, per day over all of 2017. You will use Durable Functions - specifically the Fan-out/Fan-in pattern - to distribute the workload across multiple instances of the Mapper then coordinate the outputs in to the Reducer and finally return the computed values for each day. The source data you will be using for this MapReduce implementation can be found here: http://www. nyc. gov/html/tlc/html/about/trip_record_data. shtml and contains 12 CSV files of roughly 800MB each (Yellow dataset) you need to make available in Azure Blob storage - total size is ~9. 6GB. "
+    }, {
+    "id": 14,
+    "url": "/template-pintereso-bootstrap-jekyll/durable-functions-concepts/",
+    "title": "Durable Functions Concepts and features",
+    "body": "2021/06/20 - Durable Functions is an extension of Azure Functions. You can use Durable Functions for stateful orchestration of function execution. A durable function app is a solution that’s made up of different Azure functions. Functions can play different roles in a durable function orchestration. There are currently four durable function types in Azure Functions: activity, orchestrator, entity, and client. The rest of this section goes into more details about the types of functions involved in an orchestration. "
+    }, {
+    "id": 15,
+    "url": "/template-pintereso-bootstrap-jekyll/Serverless-recipes-with-Azure-Cosmos-DB-and-Azure-Functions/",
+    "title": "Serverless recipes with Azure Cosmos DB and Azure Functions",
+    "body": "2021/06/20 - This repository acts as compendium of different recipes using Azure Cosmos DB and Azure Functions. The content is distributed in different folders, each for a different scenario. "
+    }, {
+    "id": 16,
+    "url": "/template-pintereso-bootstrap-jekyll/Serverless-Architectures-with-CosmoDB/",
+    "title": "Serverless Architectures with CosmosDB",
+    "body": "2021/06/20 - Serverless applications Use Azure Functions and Azure Cosmos DB to build globally distributed, scalable serverless applications. "
+    }, {
+    "id": 17,
+    "url": "/template-pintereso-bootstrap-jekyll/Azure-Cost-Optimization-tools/",
+    "title": "Azure Cost Optimization tools",
+    "body": "2021/06/20 - The Microsoft Azure Well-Architected Framework has 5 aligned and connected pillars, one of which is Cost Optimization.  Azure providing services as a utility, being consumed on demand it drives a fundamental change that impacts planning, bookkeeping, and organization. The ability to have virtually unlimited compute resources at one’s disposable means your organization must always be wary of excess costs that are not providing business value. The tools listed here will help your organization get an idea of where it is spending the most and where some cost optimization might be had.  Cost Optimization is one of the top priorities for organization across industries as shown by the Flexera 2020 State of the Cloud Report. "
+    }, {
+    "id": 18,
+    "url": "/template-pintereso-bootstrap-jekyll/Azure-Cost-Optimization-Methods/",
+    "title": "Azure Cost Optimization Methods",
+    "body": "2021/06/20 - Find out about the tools, offers, and guidance designed to help you manage and optimize your Azure costs. Learn how to understand and forecast your bill, optimize workload costs, and control your spending. "
+    }, {
+    "id": 19,
+    "url": "/template-pintereso-bootstrap-jekyll/processing-100K-events-per-second-on-Azure-Functions/",
+    "title": "Processing 100K events per second on Azure Functions",
+    "body": "2021/06/19 - Today I want to talk about running high scale Event Hub/IOT Hub workloads on Azure Functions and some key points to be aware of in order to maximize the performance you get from the platform "
+    }, {
+    "id": 20,
+    "url": "/template-pintereso-bootstrap-jekyll/Serverless-Microservices-Reference-Architecture/",
+    "title": "Serverless Microservices Reference Architecture",
+    "body": "2021/06/19 - This reference architecture walks you through the decision-making process involved in designing, developing, and delivering the Rideshare by Relecloud application (a fictitious company) "
+    }, {
+    "id": 21,
+    "url": "/template-pintereso-bootstrap-jekyll/How-to-develop-Secure-Applications-using-CosmosDB/",
+    "title": "How to develop Secure Applications using Cosmos DB",
+    "body": "2021/06/19 - This reference architecture walks you through the decision-making process involved in designing, developing, and delivering the Rideshare by Relecloud application (a fictitious company) "
+    }, {
+    "id": 22,
+    "url": "/template-pintereso-bootstrap-jekyll/Durable-Functiosn-Storage-Provider/",
+    "title": "Durable Functions Storage Provider",
+    "body": "2021/06/19 - Durable Functions automatically persists function parameters, return values, and other state to durable storage to guarantee reliable execution. The default configuration for Durable Functions stores this runtime state in an Azure Storage (classic) account. However, it’s possible to configure Durable Functions v2. 0 and above to use an alternate durable storage provider. "
+    }, {
+    "id": 23,
+    "url": "/template-pintereso-bootstrap-jekyll/Durable-Functions-Pyhton-Samples/",
+    "title": "Durable Functions Python samples",
+    "body": "2021/06/19 - Durable Functions is an extension of Azure Functions that lets you write stateful functions in a serverless compute environment. You can use this repository to get started with sample code for durable functions patterns. "
+    }, {
+    "id": 24,
+    "url": "/template-pintereso-bootstrap-jekyll/CosmosDB-Serverless-Overview/",
+    "title": "Cosmos DB Serverless Overview",
+    "body": "2021/06/19 - Azure Cosmos DB serverless lets you use your Azure Cosmos account in a consumption-based fashion where you are only charged for the Request Units consumed by your database operations and the storage consumed by your data. Serverless containers can serve thousands of requests per second with no minimum charge and no capacity planning required. "
+    }, {
+    "id": 25,
+    "url": "/template-pintereso-bootstrap-jekyll/CosmosDB-Security-Overview/",
+    "title": "CosmosDB Security Overview",
+    "body": "2021/06/19 - This article discusses database security best practices and key features offered by Azure Cosmos DB to help you prevent, detect, and respond to database breaches. "
+    }, {
+    "id": 26,
+    "url": "/template-pintereso-bootstrap-jekyll/Best-Practices-for-designing-and-building-Azure-Functions/",
+    "title": "Best Practices for building and designing Azure Functions",
+    "body": "2021/06/19 - In this post I want to make notes of a few best practices I’ve adopted and keep at the top of mind when I engage in new projects that require reliable serverless executions at scale. "
+    }, {
+    "id": 27,
+    "url": "/template-pintereso-bootstrap-jekyll/Securing-Azure-Functions/",
+    "title": "Securing Azure Functions",
+    "body": "2021/06/12 - In many ways, planning for secure development, deployment, and operation of serverless functions is much the same as for any web-based or cloud hosted application. Azure App Service provides the hosting infrastructure for your function apps. This article provides security strategies for running your function code, and how App Service can help you secure your functions. "
+    }];
+
+var idx = lunr(function () {
+    this.ref('id')
+    this.field('title')
+    this.field('body')
+
+    documents.forEach(function (doc) {
+        this.add(doc)
+    }, this)
+});
+
+
+    
+function lunr_search(term) {
+    $('#lunrsearchresults').show( 1000 );
+    $( "body" ).addClass( "modal-open" );
+    
+    document.getElementById('lunrsearchresults').innerHTML = '<div id="resultsmodal" class="modal fade show d-block"  tabindex="-1" role="dialog" aria-labelledby="resultsmodal"> <div class="modal-dialog shadow-lg" role="document"> <div class="modal-content"> <div class="modal-header" id="modtit"> <button type="button" class="close" id="btnx" data-dismiss="modal" aria-label="Close"> &times; </button> </div> <div class="modal-body"> <ul class="mb-0"> </ul>    </div> <div class="modal-footer"><button id="btnx" type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button></div></div> </div></div>';
+    if(term) {
+        document.getElementById('modtit').innerHTML = "<h5 class='modal-title'>Search results for '" + term + "'</h5>" + document.getElementById('modtit').innerHTML;
+        //put results on the screen.
+        var results = idx.search(term);
+        if(results.length>0){
+            //console.log(idx.search(term));
+            //if results
+            for (var i = 0; i < results.length; i++) {
+                // more statements
+                var ref = results[i]['ref'];
+                var url = documents[ref]['url'];
+                var title = documents[ref]['title'];
+                var body = documents[ref]['body'].substring(0,160)+'...';
+                document.querySelectorAll('#lunrsearchresults ul')[0].innerHTML = document.querySelectorAll('#lunrsearchresults ul')[0].innerHTML + "<li class='lunrsearchresult'><a href='" + url + "'><span class='title'>" + title + "</span><br /><small><span class='body'>"+ body +"</span><br /><span class='url'>"+ url +"</span></small></a></li>";
+            }
+        } else {
+            document.querySelectorAll('#lunrsearchresults ul')[0].innerHTML = "<li class='lunrsearchresult'>Sorry, no results found. Close & try a different search!</li>";
+        }
+    }
+    return false;
+}
+</script>
+<style>
+    .lunrsearchresult .title {color: #d9230f;}
+    .lunrsearchresult .url {color: silver;}
+    .lunrsearchresult a {display: block; color: #777;}
+    .lunrsearchresult a:hover, .lunrsearchresult a:focus {text-decoration: none;}
+    .lunrsearchresult a:hover .title {text-decoration: underline;}
+</style>
+
+
+
+
+<form class="bd-search hidden-sm-down" onSubmit="return lunr_search(document.getElementById('lunrsearch').value);">
+<input type="text" class="form-control bg-graylight border-0 font-weight-bold"  id="lunrsearch" name="q" value="" placeholder="Type and hit enter..."> 
+</form>    		
+    	</ul>
+    	<ul class="navbar-nav ml-auto align-items-center">
+    		<!--  Replace top menu links here -->
+
+<li class="nav-item">
+    <a class="nav-link active" href="/template-pintereso-bootstrap-jekyll/index.html">Home</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="/template-pintereso-bootstrap-jekyll/categories.html">Categories</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="/template-pintereso-bootstrap-jekyll/web-concepts-library/">Post</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="/template-pintereso-bootstrap-jekyll/contact.html">Contact</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="/template-pintereso-bootstrap-jekyll/about.html"><img class="rounded-circle mr-2" src="/template-pintereso-bootstrap-jekyll/assets/images/sal.jpg" width="30"><span class="align-middle">About</span></a>
+</li>
+<li class="nav-item dropdown">
+	<a class="nav-link" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	  <svg style="margin-top:10px;" class="_3DJPT" version="1.1" viewbox="0 0 32 32" width="21" height="21" aria-hidden="false" data-reactid="71"><path d="M7 15.5c0 1.9-1.6 3.5-3.5 3.5s-3.5-1.6-3.5-3.5 1.6-3.5 3.5-3.5 3.5 1.6 3.5 3.5zm21.5-3.5c-1.9 0-3.5 1.6-3.5 3.5s1.6 3.5 3.5 3.5 3.5-1.6 3.5-3.5-1.6-3.5-3.5-3.5zm-12.5 0c-1.9 0-3.5 1.6-3.5 3.5s1.6 3.5 3.5 3.5 3.5-1.6 3.5-3.5-1.6-3.5-3.5-3.5z" data-reactid="22"></path></svg>
+	</a>
+	<div class="dropdown-menu dropdown-menu-right shadow-lg" aria-labelledby="dropdown02">
+		<h4 class="dropdown-header display-4">Download Pintereso<br/> Free Bootstrap Jekyll Theme</h4>
+		<div class="dropdown-divider">
+		</div>
+		<span class="dropdown-item">
+			<a href="https://github.com/wowthemesnet/template-pintereso-bootstrap-jekyll/archive/master.zip" class="btn btn-primary d-block"><i class="fa fa-download"></i> Download
+			</a>
+		</span>
+	</div>
+</li>
+    	</ul>
+    </div>
+    </nav>
+    
+    <div id="lunrsearchresults">
+        <ul class="mb-0"></ul>
+    </div>
+    
+    <main role="main">        
+        <section class="bg-gray200 pt-5 pb-5">    
+    <div class="container">
+    	<div class="row justify-content-center">
+    		<div class="col-md-8">
+                
+    			<article class="card">
+                  
+                    
+    			<div class="card-body">
+                    
+    				<h1 class="display-4">
+    				    Real-time Speech-to-Text and Translation with Cognitive Services, Azure Functions, and SignalR Service 
+                    </h1>                    
+                     
+                    <small class="text-muted d-block mb-3">
+                        
+                        
+                    </small>                    
+                    
+    				<p>The app consists of two projects:</p>
+
+<p>A Vue.js app that is our main interface. It uses the Microsoft Azure Cognitive Services Speech SDK to listen to the device’s microphone and perform real-time speech-to-text and translations.</p>
+
+<p>An Azure Function app providing serverless HTTP APIs that the user interface will call to broadcast translated captions to connected devices using Azure SignalR Service.</p>
+
+                    
+                    
+                    <p><a target="_blank" href="https://anthonychu.ca/post/realtime-captioning-translation-cognitive-services-signalr-azure-functions/" class="btn btn-gray d-block font-weight-bold">
+                        Visit <i class="fas fa-external-link-alt"></i></a>
+                    </p>
+                    
+                    
+                     
+                 <!--    <span class="pinme">
+                        <a data-pin-do="buttonPin" data-pin-tall="true" href="https://www.pinterest.com/pin/create/button/?url=/template-pintereso-bootstrap-jekyll/realtime-captioning-translation-cognitive-services-signalr-azure-functions/&media=/template-pintereso-bootstrap-jekyll/https://anthonychu.ca/post-assets/2019-03-26/architecture.png&description=Real-time Speech-to-Text and Translation with Cognitive Services, Azure Functions, and SignalR Service- The app consists of two projects: A Vue.js app that is our main interface. It uses the Microsoft Azure Cognitive Services Speech SDK to listen..."></a>
+                    </span>   -->
+                    <img class="card-img-top mb-2" max-width="60%" src="https://anthonychu.ca/post-assets/2019-03-26/architecture.png" alt="Real-time Speech-to-Text and Translation with Cognitive Services, Azure Functions, and SignalR Service"> 
+                
+
+                    
+                      <a class="btn btn-sm btn-primary mt-2" href="/template-pintereso-bootstrap-jekyll/categories.html#functions">
+                        # functions
+                      </a>
+                    
+                      <a class="btn btn-sm btn-primary mt-2" href="/template-pintereso-bootstrap-jekyll/categories.html#ml">
+                        # ml
+                      </a>
+                    
+                    
+    				<!--  Don't edit anything here. Set your disqus id in _config.yml -->
+
+<div id="comments" class="mt-5">
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript">
+        var disqus_shortname = 'demowebsite'; 
+        var disqus_developer = 0;
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>
+    Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
+</div>
+                    
+    			</div>  
+                    
+    			</article>
+                
+                <div class="PageNavigation">
+                  
+                    <a class="prev" href="/template-pintereso-bootstrap-jekyll/serverless-keyvault-secret-rotation-handling/"><i class="fa fa-angle-left"></i> </a>
+                  
+                  
+                    <a class="next" href="/template-pintereso-bootstrap-jekyll/protect-api-s-using-oauth-2-0-in-apim/"><i class="fa fa-angle-right"></i></a>
+                  
+                </div>
+                
+    		</div>
+    	</div>
+    </div>
+</section>        
+    </main>
+    
+    <footer class="footer pt-5 pb-5 text-center">        
+    <div class="container">        
+          <div class="socials-media">    
+            <ul class="list-unstyled">
+              <!--  Replace footer social links here -->
+
+<li class="d-inline-block ml-1 mr-1"><a target="_blank" href="https://github.com/wowthemesnet" class="text-dark"><i class="fab fa-github"></i></a></li>
+
+<li class="d-inline-block ml-1 mr-1"><a target="_blank" href="https://twitter.com/wowthemesnet" class="text-dark"><i class="fab fa-twitter"></i></a></li>
+            </ul>    
+          </div>
+          <!--
+  If you want to remove credits, please, donate:
+  https://www.wowthemes.net/freebies-license/
+-->
+
+<p>
+    
+<span class="credits"> 
+    
+	<a target="_blank" class="text-dark" href="https://www.wowthemes.net/pintereso-free-bootstrap-jekyll-theme/">
+		Made with <i class="fa fa-heart text-danger"></i> <u>Pintereso Jekyll Theme</u>.
+	</a>
+    
+</span>
+    
+</p>
+
+<p>
+    <a class="text-muted" href="/template-pintereso-bootstrap-jekyll/">
+        &copy;  Azure Serverless Indiders. 
+    </a>
+    
+    <a class="text-muted" href="/template-pintereso-bootstrap-jekyll/privacy-policy.html">
+        Privacy Policy.
+    </a>
+    
+    <a class="text-muted" target="_blank" href="https://www.wowthemes.net/freebies-license/">
+        License.
+    </a>
+    
+</p>
+        </div>
+    </footer>
+    
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    
+    <script src="/template-pintereso-bootstrap-jekyll/assets/js/theme.js"></script>
+    
+    <script src="/template-pintereso-bootstrap-jekyll/assets/js/lunr.js"></script>
+    
+    <!-- All this area goes before </body> closing tag --> 
+
+
+<!-- AddThis, replace this with your own code from https://www.addthis.com/ --> 
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b15193f169714ca"></script>
+
+
+<!-- Pinterest Script, nothing for you to replace here  --> 
+<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+
+<!-- Cookie Consent, nothing for you to replace here. Remove it if you want  -->
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#eb6c44",
+      "text": "#ffffff"
+    },
+    "button": {
+      "background": "#f5d948"
+    }
+  },
+  "position": "bottom-left",
+  "content": {
+    "href": "/template-pintereso-bootstrap-jekyll/privacy-policy.html"
+  }
+})});
+</script>
+    
+</body>
+    
+</html>
