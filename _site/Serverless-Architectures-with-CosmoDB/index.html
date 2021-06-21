@@ -102,101 +102,131 @@ var documents = [{
     "body": "      Sitemap: {{ “sitemap. xml”   absolute_url }}   "
     }, {
     "id": 8,
+    "url": "/template-pintereso-bootstrap-jekyll/page2/",
+    "title": "Pintereso Free Jekyll Theme",
+    "body": "        Explore Articles          {% include menu-categories. html %}                    {% for post in paginator. posts reversed %}      {% include card-post. html %}    {% endfor %}                 {% if paginator. total_pages &gt; 1 %}          {% if paginator. previous_page %}      &laquo; Prev     {% else %}      &laquo; Prev     {% endif %}     {% for page in (1. . paginator. total_pages) %}      {% if page == paginator. page %}       {{ page }}      {% elsif page == 1 %}       {{ page }}      {% else %}       {{ page }}      {% endif %}     {% endfor %}     {% if paginator. next_page %}      Next &raquo;     {% else %}      Next &raquo;     {% endif %}        {% endif %}        "
+    }, {
+    "id": 9,
+    "url": "/template-pintereso-bootstrap-jekyll/sqldd-cost-management/",
+    "title": "Plan and manage costs for Azure SQL Database",
+    "body": "2021/06/20 - This article describes how you plan for and manage costs for Azure SQL Database. First, you use the Azure pricing calculator to add Azure resources, and review the estimated costs. After you’ve started using Azure SQL Database resources, use Cost Management features to set budgets and monitor costs. "
+    }, {
+    "id": 10,
+    "url": "/template-pintereso-bootstrap-jekyll/sqldb-serverless-overview/",
+    "title": "Azure SQL Database serverless",
+    "body": "2021/06/20 - Serverless is a compute tier for single databases in Azure SQL Database that automatically scales compute based on workload demand and bills for the amount of compute used per second. The serverless compute tier also automatically pauses databases during inactive periods when only storage is billed and automatically resumes databases when activity returns. "
+    }, {
+    "id": 11,
+    "url": "/template-pintereso-bootstrap-jekyll/serverless-what-the-hack/",
+    "title": "Serverless Hack: Build a Computer Vision enabled App",
+    "body": "2021/06/20 - In this hack, you will be solving the business problem of event driven scale for the Tollbooth Application. Provision an Azure Storage Blob Container to store vehicle photos. Set up Azure Functions to process the vehicle photos leveraging Event Grid. Use Cognitive Services Computer Vision API OCR to comprehend the license plate data from the vehicle photos. Store the license plate data in Azure Cosmos DB. Provision a Logic App for obtaining the stored license plate data from Cosmos DB and exporting it to a new CSV file saved to Blob storage. Use Application Insights to monitor the Azure Functions in real-time as data is being processed through the serverless architecture. "
+    }, {
+    "id": 12,
     "url": "/template-pintereso-bootstrap-jekyll/serverless-keyvault-secret-rotation-handling/",
     "title": "Handling KeyVault secret rotation changes utilized by an Azure Function",
     "body": "2021/06/20 - This sample showcases one way to handle when a KeyVault secret used by your Azure Function is “rolled” or updated as part of normal security operations in your organizations. "
     }, {
-    "id": 9,
+    "id": 13,
     "url": "/template-pintereso-bootstrap-jekyll/realtime-captioning-translation-cognitive-services-signalr-azure-functions/",
     "title": "Real-time Speech-to-Text and Translation with Cognitive Services, Azure Functions, and SignalR Service",
     "body": "2021/06/20 - The app consists of two projects: A Vue. js app that is our main interface. It uses the Microsoft Azure Cognitive Services Speech SDK to listen to the device’s microphone and perform real-time speech-to-text and translations. An Azure Function app providing serverless HTTP APIs that the user interface will call to broadcast translated captions to connected devices using Azure SignalR Service. "
     }, {
-    "id": 10,
+    "id": 14,
     "url": "/template-pintereso-bootstrap-jekyll/protect-api-s-using-oauth-2-0-in-apim/",
     "title": "Protect API's using OAuth 2.0 in APIM",
     "body": "2021/06/20 - The API Management is a proxy to the backend APIs, it’s a good practice to implement security mechanism to provide an extra layer of security to avoid unauthorized access to APIs. "
     }, {
-    "id": 11,
+    "id": 15,
+    "url": "/template-pintereso-bootstrap-jekyll/preview-build-real-time-app-with-pub-sub/",
+    "title": "Easily build real-time apps with WebSockets and Azure Web PubSub—now in preview",
+    "body": "2021/06/20 - Real-time application scenarios such as chat for streaming videos, interactive whiteboards for remote education, and IoT dashboards are becoming ever more popular. Businesses are keen to build such applications for enhanced user experiences and real-time interactions with end customers. Today, we are announcing the preview of the Azure Web PubSub service for building real-time web applications with WebSockets. WebSocket is a standardized protocol that provides full-duplex communication. It is key to building efficient real-time web interactions and is supported by all major browsers as well as web servers. Azure Web PubSub enables you to use WebSockets and the publish-subscribe pattern to easily build real-time web applications, like live monitoring dashboards, cross-platform live chat, real-time location on maps, and more. "
+    }, {
+    "id": 16,
     "url": "/template-pintereso-bootstrap-jekyll/gaming-in-editor-telemetry/",
     "title": "In-editor game telemetry visualization",
     "body": "2021/06/20 - This is an example of how a developer could implement an in-editor telemetry visualization solution for their game. In fact, we developed an Unreal Engine 4 Plugin and Unity Plugin using this sample as its backend. The service component is game engine agnostic. "
     }, {
-    "id": 12,
+    "id": 17,
     "url": "/template-pintereso-bootstrap-jekyll/functions-python-azureml-azurefunctions-deeplearning/",
     "title": "Training a Model with AzureML and Azure Functions",
     "body": "2021/06/20 - Automating the training of new ML model given code updates and/or new data with labels provided by a data scientist, can pose a challenge in the context of the dev ops or app development process due to the manual nature of data science work. One solution would be to use a training script (written by the data scientist) with the Azure Machine Learning SDK for Python (Azure ML Python SDK) run with a lightweight Azure Function that sends a training script to larger compute (process managed by the dev ops professional) to train an ML model (automatically performed when new data appears). This, then, triggers the build and release of an intelligent application (managed by the app developer). The intent of this repository is to communicate the process of training a model using a Python-based Azure Function and the Azure ML Python SDK, as well as, to provide a code sample for doing so. Training a model with the Azure ML Python SDK involves utilizing an Azure Compute option (e. g. an N-Series AML Compute) - the model is not trained within the Azure Function Consumption Plan. Triggers for the Azure Function could be HTTP Requests, an Event Grid or some other trigger. "
     }, {
-    "id": 13,
+    "id": 18,
     "url": "/template-pintereso-bootstrap-jekyll/durablefunctions-mapreduce-dotnet/",
     "title": "Big Data Processing: Serverless MapReduce on Azure",
     "body": "2021/06/20 - In this sample you will find handful of Azure Functions comprising a Mapper and Reducer to determine the average speed of New York Yellow taxi trips, per day over all of 2017. You will use Durable Functions - specifically the Fan-out/Fan-in pattern - to distribute the workload across multiple instances of the Mapper then coordinate the outputs in to the Reducer and finally return the computed values for each day. The source data you will be using for this MapReduce implementation can be found here: http://www. nyc. gov/html/tlc/html/about/trip_record_data. shtml and contains 12 CSV files of roughly 800MB each (Yellow dataset) you need to make available in Azure Blob storage - total size is ~9. 6GB. "
     }, {
-    "id": 14,
+    "id": 19,
     "url": "/template-pintereso-bootstrap-jekyll/durable-functions-concepts/",
     "title": "Durable Functions Concepts and features",
     "body": "2021/06/20 - Durable Functions is an extension of Azure Functions. You can use Durable Functions for stateful orchestration of function execution. A durable function app is a solution that’s made up of different Azure functions. Functions can play different roles in a durable function orchestration. There are currently four durable function types in Azure Functions: activity, orchestrator, entity, and client. The rest of this section goes into more details about the types of functions involved in an orchestration. "
     }, {
-    "id": 15,
+    "id": 20,
+    "url": "/template-pintereso-bootstrap-jekyll/build-serverless-fullstack-applications/",
+    "title": "Build serverless, full stack applications in Azure",
+    "body": "2021/06/20 - Whether you’re new or seasoned to cloud, development, and SQL, building and architecting applications in the cloud has become a required skill for many roles. We recently announced a new learning path to help developers of all skill levels learn how to create applications quickly and effectively with Azure. The new learning path is Build serverless, full stack applications in Azure. In this learning path, you’ll learn how to create, build, and deploy modern full stack applications in Azure leveraging the language of your choice (Python, Node. js, or . NET) and with a Vue. js frontend. Topics covered include modern database capabilities, CI/CD and DevOps, backend API development, REST, and more. Using a real-world scenario of trying to catch the bus, you will learn how to build a solution that integrates Azure SQL Database, Azure Functions, Azure Static Web Apps, Logic Apps, Visual Studio Code and GitHub Actions. "
+    }, {
+    "id": 21,
     "url": "/template-pintereso-bootstrap-jekyll/Serverless-recipes-with-Azure-Cosmos-DB-and-Azure-Functions/",
     "title": "Serverless recipes with Azure Cosmos DB and Azure Functions",
     "body": "2021/06/20 - This repository acts as compendium of different recipes using Azure Cosmos DB and Azure Functions. The content is distributed in different folders, each for a different scenario. "
     }, {
-    "id": 16,
+    "id": 22,
     "url": "/template-pintereso-bootstrap-jekyll/Serverless-Architectures-with-CosmoDB/",
     "title": "Serverless Architectures with CosmosDB",
     "body": "2021/06/20 - Serverless applications Use Azure Functions and Azure Cosmos DB to build globally distributed, scalable serverless applications. "
     }, {
-    "id": 17,
+    "id": 23,
     "url": "/template-pintereso-bootstrap-jekyll/Azure-Cost-Optimization-tools/",
     "title": "Azure Cost Optimization tools",
     "body": "2021/06/20 - The Microsoft Azure Well-Architected Framework has 5 aligned and connected pillars, one of which is Cost Optimization.  Azure providing services as a utility, being consumed on demand it drives a fundamental change that impacts planning, bookkeeping, and organization. The ability to have virtually unlimited compute resources at one’s disposable means your organization must always be wary of excess costs that are not providing business value. The tools listed here will help your organization get an idea of where it is spending the most and where some cost optimization might be had.  Cost Optimization is one of the top priorities for organization across industries as shown by the Flexera 2020 State of the Cloud Report. "
     }, {
-    "id": 18,
+    "id": 24,
     "url": "/template-pintereso-bootstrap-jekyll/Azure-Cost-Optimization-Methods/",
     "title": "Azure Cost Optimization Methods",
     "body": "2021/06/20 - Find out about the tools, offers, and guidance designed to help you manage and optimize your Azure costs. Learn how to understand and forecast your bill, optimize workload costs, and control your spending. "
     }, {
-    "id": 19,
+    "id": 25,
     "url": "/template-pintereso-bootstrap-jekyll/processing-100K-events-per-second-on-Azure-Functions/",
     "title": "Processing 100K events per second on Azure Functions",
     "body": "2021/06/19 - Today I want to talk about running high scale Event Hub/IOT Hub workloads on Azure Functions and some key points to be aware of in order to maximize the performance you get from the platform "
     }, {
-    "id": 20,
+    "id": 26,
     "url": "/template-pintereso-bootstrap-jekyll/Serverless-Microservices-Reference-Architecture/",
     "title": "Serverless Microservices Reference Architecture",
     "body": "2021/06/19 - This reference architecture walks you through the decision-making process involved in designing, developing, and delivering the Rideshare by Relecloud application (a fictitious company) "
     }, {
-    "id": 21,
+    "id": 27,
     "url": "/template-pintereso-bootstrap-jekyll/How-to-develop-Secure-Applications-using-CosmosDB/",
     "title": "How to develop Secure Applications using Cosmos DB",
     "body": "2021/06/19 - This reference architecture walks you through the decision-making process involved in designing, developing, and delivering the Rideshare by Relecloud application (a fictitious company) "
     }, {
-    "id": 22,
+    "id": 28,
     "url": "/template-pintereso-bootstrap-jekyll/Durable-Functiosn-Storage-Provider/",
     "title": "Durable Functions Storage Provider",
     "body": "2021/06/19 - Durable Functions automatically persists function parameters, return values, and other state to durable storage to guarantee reliable execution. The default configuration for Durable Functions stores this runtime state in an Azure Storage (classic) account. However, it’s possible to configure Durable Functions v2. 0 and above to use an alternate durable storage provider. "
     }, {
-    "id": 23,
+    "id": 29,
     "url": "/template-pintereso-bootstrap-jekyll/Durable-Functions-Pyhton-Samples/",
     "title": "Durable Functions Python samples",
     "body": "2021/06/19 - Durable Functions is an extension of Azure Functions that lets you write stateful functions in a serverless compute environment. You can use this repository to get started with sample code for durable functions patterns. "
     }, {
-    "id": 24,
+    "id": 30,
     "url": "/template-pintereso-bootstrap-jekyll/CosmosDB-Serverless-Overview/",
     "title": "Cosmos DB Serverless Overview",
     "body": "2021/06/19 - Azure Cosmos DB serverless lets you use your Azure Cosmos account in a consumption-based fashion where you are only charged for the Request Units consumed by your database operations and the storage consumed by your data. Serverless containers can serve thousands of requests per second with no minimum charge and no capacity planning required. "
     }, {
-    "id": 25,
+    "id": 31,
     "url": "/template-pintereso-bootstrap-jekyll/CosmosDB-Security-Overview/",
     "title": "CosmosDB Security Overview",
     "body": "2021/06/19 - This article discusses database security best practices and key features offered by Azure Cosmos DB to help you prevent, detect, and respond to database breaches. "
     }, {
-    "id": 26,
+    "id": 32,
     "url": "/template-pintereso-bootstrap-jekyll/Best-Practices-for-designing-and-building-Azure-Functions/",
     "title": "Best Practices for building and designing Azure Functions",
     "body": "2021/06/19 - In this post I want to make notes of a few best practices I’ve adopted and keep at the top of mind when I engage in new projects that require reliable serverless executions at scale. "
     }, {
-    "id": 27,
+    "id": 33,
     "url": "/template-pintereso-bootstrap-jekyll/Securing-Azure-Functions/",
     "title": "Securing Azure Functions",
     "body": "2021/06/12 - In many ways, planning for secure development, deployment, and operation of serverless functions is much the same as for any web-based or cloud hosted application. Azure App Service provides the hosting infrastructure for your function apps. This article provides security strategies for running your function code, and how App Service can help you secure your functions. "
@@ -265,9 +295,9 @@ function lunr_search(term) {
 <li class="nav-item">
     <a class="nav-link" href="/template-pintereso-bootstrap-jekyll/categories.html">Categories</a>
 </li>
-<li class="nav-item">
+<!-- <li class="nav-item">
     <a class="nav-link" href="/template-pintereso-bootstrap-jekyll/web-concepts-library/">Post</a>
-</li>
+</li> -->
 <li class="nav-item">
     <a class="nav-link" href="/template-pintereso-bootstrap-jekyll/contact.html">Contact</a>
 </li>
